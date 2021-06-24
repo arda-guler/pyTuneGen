@@ -1,102 +1,94 @@
-from synthesizer import Player, Synthesizer, Waveform
 import random
 import time
 import requests
 
-response = requests.get('https://godsays.xyz')
-
-summation = 0
-if response.status_code == 200:
-    godsaid = str(response.content)
-    for word in godsaid.split(" "):
-        for char in word:
-            summation += ord(char)
-else:
-    print("god is down")
-
-print("Seed:", summation)
-random.seed(summation)
-
-#-------------------------
-#  NOTE FREQUENCY TABLE
-#-------------------------
-
-# 4th octave
-c4 = 262
-c_4 = 277
-d4 = 294
-d_4 = 311
-e4 = 330
-f4 = 349
-f_4 = 370
-g4 = 392
-g_4 = 415
-a4 = 440
-a_4 = 466
-b4 = 494
-
-# 5th octave
-c5 = 523
-c_5 = 554
-d5 = 587
-d_5 = 622
-e5 = 659
-f5 = 698
-f_5 = 740
-g5 = 784
-g_5 = 831
-a5 = 880.00
-a_5 = 932
-b5 = 988
-
-# chords
-
-full_notes = {"C4":c4, "C#4":c_4, "D4":d4, "D#4":d_4, "E4":e4, "F4":f4, "F#4":f_4, "G4":g4, "G#4":g_4, "A4":a4, "A#4":a_4, "B4":b4,
-         "C5":c5, "C#5":c_5, "D5":d5, "D#5":d_5, "E5":e5, "F5":f5, "F#5":f_5, "G5":g5, "G#5":g_5, "A5":a5, "A#5":a_5, "B5":b5}
-
-c_major = {"C4":c4, "D4":d4, "E4":e4, "F4":f4, "G4":g4, "A4":a4, "B4":b4,
-           "C5":c5, "D5":d5, "E5":e5, "F5":f5, "G5":g5, "A5":a5, "B5":b5}
-
-d_minor = {"C4":c4, "D4":d4, "E4":e4, "F4":f4, "G4":g4, "A4":a4, "A#4":a_4,
-           "C5":c5, "D5":d5, "E5":e5, "F5":f5, "G5":g5, "A5":a5, "A#5":a_5}
-
-g_minor = {"C4":c4, "D4":d4, "D#4":d_4, "F4":f4, "G4":g4, "A4":a4, "A#4":a_4,
-           "C5":c5, "D5":d5, "D#4":d_5, "F4":f5, "G4":g5, "A4":a5, "A#4":a_5}
-
-chords = {"Full Notes":full_notes, "C Major":c_major, "D Minor":d_minor, "G Minor":g_minor}
-
-#-------------------------
-#       BPM PRESETS
-#-------------------------
-bpm_slowest = 30
-bpm_slow = 60
-bpm_slowish = 90
-bpm_normal = 120
-bpm_fastish = 160
-bpm_fast = 180
-bpm_fastest = 210
-
-bpms = [bpm_slowest, bpm_slow, bpm_slowish, bpm_normal, bpm_fastish, bpm_fast, bpm_fastest]
-
-#-------------------------
-#     NOTE DURATIONS
-#-------------------------
-
-note_durations = {"1/4":1/4, "1/2": 1/2, "1":1, "2":2, "4":4}
-
-#-------------------------
-#       SETUP
-#-------------------------
-player = Player()
-player.open_stream()
-synth1 = Synthesizer(osc1_waveform = Waveform.sine, osc1_volume=1.0,
-                     use_osc2=True, osc2_waveform=Waveform.square, osc2_volume=0.3)
-
-#-------------------------
-#       PLAY
-#-------------------------
-
 def generateMusic():
+    response = requests.get('https://godsays.xyz')
+
+    summation = 0
+    if response.status_code == 200:
+        godsaid = str(response.content)
+        for word in godsaid.split(" "):
+            for char in word:
+                summation += ord(char)
+    else:
+        print("god is down")
+
+    print("Seed:", summation)
+    random.seed(summation)
+
+    #-------------------------
+    #  NOTE FREQUENCY TABLE
+    #-------------------------
+
+    # 4th octave
+    c4 = 262
+    c_4 = 277
+    d4 = 294
+    d_4 = 311
+    e4 = 330
+    f4 = 349
+    f_4 = 370
+    g4 = 392
+    g_4 = 415
+    a4 = 440
+    a_4 = 466
+    b4 = 494
+
+    # 5th octave
+    c5 = 523
+    c_5 = 554
+    d5 = 587
+    d_5 = 622
+    e5 = 659
+    f5 = 698
+    f_5 = 740
+    g5 = 784
+    g_5 = 831
+    a5 = 880.00
+    a_5 = 932
+    b5 = 988
+
+    # chords
+
+    full_notes = {"C4":c4, "C#4":c_4, "D4":d4, "D#4":d_4, "E4":e4, "F4":f4, "F#4":f_4, "G4":g4, "G#4":g_4, "A4":a4, "A#4":a_4, "B4":b4,
+             "C5":c5, "C#5":c_5, "D5":d5, "D#5":d_5, "E5":e5, "F5":f5, "F#5":f_5, "G5":g5, "G#5":g_5, "A5":a5, "A#5":a_5, "B5":b5}
+
+    c_major = {"C4":c4, "D4":d4, "E4":e4, "F4":f4, "G4":g4, "A4":a4, "B4":b4,
+               "C5":c5, "D5":d5, "E5":e5, "F5":f5, "G5":g5, "A5":a5, "B5":b5}
+
+    d_minor = {"C4":c4, "D4":d4, "E4":e4, "F4":f4, "G4":g4, "A4":a4, "A#4":a_4,
+               "C5":c5, "D5":d5, "E5":e5, "F5":f5, "G5":g5, "A5":a5, "A#5":a_5}
+
+    g_minor = {"C4":c4, "D4":d4, "D#4":d_4, "F4":f4, "G4":g4, "A4":a4, "A#4":a_4,
+               "C5":c5, "D5":d5, "D#4":d_5, "F4":f5, "G4":g5, "A4":a5, "A#4":a_5}
+
+    chords = {"Full Notes":full_notes, "C Major":c_major, "D Minor":d_minor, "G Minor":g_minor}
+
+    #-------------------------
+    #       BPM PRESETS
+    #-------------------------
+    bpm_slowest = 30
+    bpm_slow = 60
+    bpm_slowish = 90
+    bpm_normal = 120
+    bpm_fastish = 160
+    bpm_fast = 180
+    bpm_fastest = 210
+
+    bpms = [bpm_slowest, bpm_slow, bpm_slowish, bpm_normal, bpm_fastish, bpm_fast, bpm_fastest]
+
+    #-------------------------
+    #     NOTE DURATIONS
+    #-------------------------
+
+    note_durations = {"1/4":1/4, "1/2": 1/2, "1":1, "2":2, "4":4}
+
+    #-------------------------
+    #       PLAY
+    #-------------------------
+
+
     # get random bpm, scale, chord, silence percent, length
     bpm_current = bpms[random.randint(0, len(bpms) - 1)]
     print("BPM: " + str(bpm_current))
@@ -160,21 +152,9 @@ def generateMusic():
 
             note_last = note_current
 
-            #if not silence:
-                #print("\nNote: " + str(note_current_name))
-            #else:
-                #print("\nSilence")
-                
-            #print("Duration: " + str(duration))
-
             if not silence:
                 music.append([note_current,duration])
-                #player.play_wave(synth1.generate_constant_wave(note_current, duration * 60/bpm_current))
             else:
                 music.append([-1,duration])
-                #time.sleep(duration * 60/bpm_current)
 
     return music
-
-generateMusic()
-
