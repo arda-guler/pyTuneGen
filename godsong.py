@@ -107,8 +107,6 @@ def generateMusic():
 
     note_jump_limit = 600 # Hertz
 
-    silence_percent = 2
-
     music_length = 50 # num. of bars
     print("Length:", music_length, "bars")
 
@@ -133,13 +131,6 @@ def generateMusic():
         note_current = None
 
         for duration in durations_current:
-            
-            silence = False
-
-            # sometimes put silence instead of a note
-            # because sometimes silence tells more than a C4
-            if random.randint(1, 100) < silence_percent:
-                silence = True
 
             # make sure the upcoming note in the bar is not the same
             # with the previous one, and also make sure we don't jump
@@ -152,9 +143,6 @@ def generateMusic():
 
             note_last = note_current
 
-            if not silence:
-                music.append([note_current,duration])
-            else:
-                music.append([-1,duration])
+            music.append([note_current,duration])
 
     return music
