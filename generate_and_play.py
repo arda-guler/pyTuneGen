@@ -81,6 +81,12 @@ synth1 = Synthesizer(osc1_waveform = Waveform.sine, osc1_volume=1.0,
 #       PLAY
 #-------------------------
 
+# print the seed, so we can replay the song
+# if we ever want to
+randseed = random.randint(0, 2**31)
+random.seed(randseed)
+print("Seed:", randseed)
+
 # get random bpm, scale, chord, silence percent, length
 bpm_current = bpms[random.randint(0, len(bpms) - 1)]
 print("BPM: " + str(bpm_current))
