@@ -142,7 +142,7 @@ def generateMusic():
 
             music.append([note_current,duration])
 
-    return godsaid, music
+    return godsaid, music, summation
 
 app = Flask(__name__, template_folder='templates')
 app.debug = True
@@ -150,7 +150,8 @@ app._static_folder = os.path.abspath("templates/static/")
 
 @app.route('/', methods=['GET'])
 def index():
-    words, song = generateMusic()
+    words, song, seed = generateMusic()
     return render_template('layouts/index.html',
                            words=words,
-                           song=song)
+                           song=song,
+                           seed=seed)
