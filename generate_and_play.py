@@ -97,7 +97,7 @@ print("Chord:", chord_current_name)
 # pitches. I could allow a real musician to do that
 # but this script probably should not. ( ◡‿◡ *)
 
-note_jump_limit = 600 # Hertz
+note_jump_limit = 200 # Hertz
 
 silence_percent = 2
 

@@ -106,7 +106,7 @@ def generateMusic():
     # pitches. I could allow a real musician to do that
     # but this script probably should not. ( ◡‿◡ *)
 
-    note_jump_limit = 600 # Hertz
+    note_jump_limit = 200 # Hertz
 
     music_length = 10 # num. of bars
     print("Length:", music_length, "bars")
@@ -142,7 +142,7 @@ def generateMusic():
 
             music.append([note_current,duration])
 
-    return godsaid, music
+    return godsaid, music, summation
 
 app = Flask(__name__, template_folder='templates')
 app.debug = True
@@ -150,7 +150,8 @@ app._static_folder = os.path.abspath("templates/static/")
 
 @app.route('/', methods=['GET'])
 def index():
-    words, song = generateMusic()
+    words, song, seed = generateMusic()
     return render_template('layouts/index.html',
                            words=words,
-                           song=song)
+                           song=song,
+                           seed=seed)

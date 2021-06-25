@@ -6,16 +6,21 @@ function sing(song, words) {
     synth.triggerAttackRelease(song[i][0], song[i][1], total_duration);
   }
 
-  var list = words.split(" ");
+  var word_list = words.split(" ");
+  let word_count = word_list.length;
+  if (song.length < word_list.length) {
+    word_count = song.length;
+  }
+
   (function printWord(i) {
     setTimeout(function () {
-      if (list[i]) {
+      if (word_list[i]) {
         let color = "#" + (((1 << 24) * Math.random()) | 0).toString(16);
         $("#words").append(
-          "<span style='color:" + color + "'>" + list[i] + "</span> "
+          "<span style='color:" + color + "'>" + word_list[i] + "</span> "
         );
       }
       if (--i) printWord(i);
-    }, (total_duration * 1000) / list.length);
-  })(list.length);
+    }, song[song.length-i][1] * 1000);
+  })(word_count);
 }
