@@ -6,6 +6,20 @@ import time
 #  NOTE FREQUENCY TABLE
 #-------------------------
 
+# 3rd octave
+c3 = 131
+c_3 = 139
+d3 = 147
+d_3 = 156
+e3 = 165
+f3 = 175
+f_3 = 185
+g3 = 196
+g_3 = 208
+a3 = 220
+a_3 = 233
+b3 = 247
+
 # 4th octave
 c4 = 262
 c_4 = 277
@@ -36,19 +50,32 @@ b5 = 988
 
 # chords
 
-full_notes = {"C4":c4, "C#4":c_4, "D4":d4, "D#4":d_4, "E4":e4, "F4":f4, "F#4":f_4, "G4":g4, "G#4":g_4, "A4":a4, "A#4":a_4, "B4":b4,
-         "C5":c5, "C#5":c_5, "D5":d5, "D#5":d_5, "E5":e5, "F5":f5, "F#5":f_5, "G5":g5, "G#5":g_5, "A5":a5, "A#5":a_5, "B5":b5}
+full_notes = {"C3":c3, "C#3":c_3, "D3":d3, "D#3":d_3, "E3":e3, "F3":f3, "F#3":f_3, "G3":g3, "G#3":g_3, "A3":a3, "A#3":a_3, "B3":b3,
+              "C4":c4, "C#4":c_4, "D4":d4, "D#4":d_4, "E4":e4, "F4":f4, "F#4":f_4, "G4":g4, "G#4":g_4, "A4":a4, "A#4":a_4, "B4":b4,
+              "C5":c5, "C#5":c_5, "D5":d5, "D#5":d_5, "E5":e5, "F5":f5, "F#5":f_5, "G5":g5, "G#5":g_5, "A5":a5, "A#5":a_5, "B5":b5}
 
-c_major = {"C4":c4, "D4":d4, "E4":e4, "F4":f4, "G4":g4, "A4":a4, "B4":b4,
+c_major = {"C3":c3, "D3":d3, "E3":e3, "F3":f3, "G3":g3, "A3":a3, "B3":b3,
+           "C4":c4, "D4":d4, "E4":e4, "F4":f4, "G4":g4, "A4":a4, "B4":b4,
            "C5":c5, "D5":d5, "E5":e5, "F5":f5, "G5":g5, "A5":a5, "B5":b5}
 
-d_minor = {"C4":c4, "D4":d4, "E4":e4, "F4":f4, "G4":g4, "A4":a4, "A#4":a_4,
+c_minor = {"C3":c3, "D3":d3, "D#3":d_3, "F3":f3, "G3":g3, "G#3":g_3, "A#3":a_3,
+           "C4":c4, "D4":d4, "D#4":d_4, "F4":f4, "G4":g4, "G#4":g_4, "A#4":a_4,
+           "C5":c5, "D5":d5, "D#5":d_5, "F5":f5, "G5":g5, "G#5":g_5, "A#5":a_5}
+
+d_minor = {"C3":c3, "D3":d3, "E3":e3, "F3":f3, "G3":g3, "A3":a3, "A#3":a_3,
+           "C4":c4, "D4":d4, "E4":e4, "F4":f4, "G4":g4, "A4":a4, "A#4":a_4,
            "C5":c5, "D5":d5, "E5":e5, "F5":f5, "G5":g5, "A5":a5, "A#5":a_5}
 
-g_minor = {"C4":c4, "D4":d4, "D#4":d_4, "F4":f4, "G4":g4, "A4":a4, "A#4":a_4,
+g_minor = {"C3":c3, "D3":d3, "D#3":d_3, "F3":f3, "G3":g3, "A3":a3, "A#3":a_3,
+           "C4":c4, "D4":d4, "D#4":d_4, "F4":f4, "G4":g4, "A4":a4, "A#4":a_4,
            "C5":c5, "D5":d5, "D#4":d_5, "F4":f5, "G4":g5, "A4":a5, "A#4":a_5}
 
-chords = {"Full Notes":full_notes, "C Major":c_major, "D Minor":d_minor, "G Minor":g_minor}
+f_minor = {"C3":c3, "C#3":c_3, "D#3":d_3, "F3":f3, "G3":g3, "G#3":g_3, "A#3":a_3,
+           "C4":c4, "C#4":c_4, "D#4":d_4, "F4":f4, "G4":g4, "G#4":g_4, "A#4":a_4,
+           "C5":c5, "C#5":c_5, "D#5":d_5, "F5":f5, "G5":g5, "G#5":g_5, "A#5":a_5}
+
+chords = {"Full Notes":full_notes, "C Major":c_major, "C Minor":c_minor, "D Minor":d_minor, "G Minor":g_minor,
+          "F Minor":f_minor}
 
 #-------------------------
 #       BPM PRESETS
@@ -97,7 +124,7 @@ print("Chord:", chord_current_name)
 # pitches. I could allow a real musician to do that
 # but this script probably should not. ( ◡‿◡ *)
 
-note_jump_limit = 200 # Hertz
+note_jump_limit = 2.2 # times the frequency of last note
 
 silence_percent = 2
 
@@ -134,7 +161,9 @@ for i in range(0, music_length):
         # make sure the upcoming note in the bar is not the same
         # with the previous one, and also make sure we don't jump
         # between high and low notes too aggressively
-        while note_last == None or (note_current == note_last or abs(note_current - note_last) >= note_jump_limit):
+        while note_last == None or (note_current == note_last or
+                                    note_current - note_last >= note_last * (note_jump_limit - 1) or
+                                    note_last - note_current >= note_last / (note_jump_limit - 1)):
             note_current_name = random.choice(list(chord_current.keys()))
             note_current = chord_current.get(note_current_name)
             if note_last == None:
