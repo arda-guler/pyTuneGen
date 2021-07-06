@@ -33,7 +33,7 @@ class TuneGen:
     def generate(self):
         durations_current = []
         bar_num = 0
-        tune_group = []
+        music = []
 
         while True:
 
@@ -86,32 +86,32 @@ class TuneGen:
             else:
                 bar_repeat_current = 1
 
-            group = TuneGroup(notes_current_names, durations_current, bar_repeat_current)
+            bar = Bar(notes_current_names, durations_current, bar_repeat_current)
             
             for bar_repeat in range(bar_repeat_current):
                 bar_num += 1
                 for i in range(len(durations_current)):
-                    group.tunes.append(Tune(notes_current[i], durations_current[i], notes_current[i] == "silence"))
+                    bar.notes.append(Note(notes_current[i], durations_current[i], notes_current[i] == "silence"))
             
-            tune_group.append(group)
+            music.append(bar)
 
             durations_current = []
             if bar_num >= self.music_length:
-                return tune_group
+                return music
 
-class TuneGroup:
-    """Representation of a tune group"""
+class Bar:
+    """Representation of a single bar"""
 
     def __init__(self, note_names, durations, bar_repeat):
         self.note_names = note_names
         self.durations = durations
         self.bar_repeat = bar_repeat
-        self.tunes = []
+        self.notes = []
 
-class Tune:
+class Note:
     """Representation of a single tune"""
     
-    def __init__(self, note, duration, silence):
-        self.note = note
+    def __init__(self, pitch, duration, silence):
+        self.pitch = pitch
         self.duration = duration
         self.silence = silence
