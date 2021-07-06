@@ -147,7 +147,7 @@ bar_num = 0
 #    GENERATE AND PLAY
 #-------------------------
 
-for l in range(0, music_length):
+while True:
 
     while durations_current == [] or sum(durations_current) < scale:
         next_duration = random.choice(list(note_durations.keys()))
@@ -211,3 +211,5 @@ for l in range(0, music_length):
                 time.sleep(durations_current[i] * 60/bpm_current)
 
     durations_current = []
+    if bar_num >= music_length:
+        break
