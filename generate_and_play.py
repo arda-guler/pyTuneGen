@@ -91,10 +91,11 @@ bpm_fastest = 210
 bpms = [bpm_slowest, bpm_slow, bpm_slowish, bpm_normal, bpm_fastish, bpm_fast, bpm_fastest]
 
 #-------------------------
-#     NOTE DURATIONS
+#  DURATIONS AND REPEATS
 #-------------------------
 
 note_durations = {"1/4":1/4, "1/2": 1/2, "1":1, "2":2, "4":4}
+bar_repeats = [2, 4]
 
 #-------------------------
 #       SETUP
@@ -103,10 +104,6 @@ player = Player()
 player.open_stream()
 synth1 = Synthesizer(osc1_waveform = Waveform.sine, osc1_volume=1.0,
                      use_osc2=True, osc2_waveform=Waveform.square, osc2_volume=0.3)
-
-#-------------------------
-#       PLAY
-#-------------------------
 
 # print the seed, so we can replay the song
 # if we ever want to
@@ -132,15 +129,25 @@ print("Chord:", chord_current_name)
 
 note_jump_limit = 2.2 # times the frequency of last note
 
-silence_percent = 2
+durations_current = []
+
+# ratio of silences to notes
+silence_percent = 1
+
+# ratio of non-repeated bars to all bars
+# (set to 100 or above to inhibit repeated bars)
+non_repeat_percent = 55
 
 music_length = 250 # num. of bars
 print("Length:", music_length, "bars")
 
-for i in range(0, music_length):
+bar_num = 0
 
-    # divide the next bar into notes of various lengths
-    durations_current = []
+#-------------------------
+#    GENERATE AND PLAY
+#-------------------------
+
+for l in range(0, music_length):
 
     while durations_current == [] or sum(durations_current) < scale:
         next_duration = random.choice(list(note_durations.keys()))
@@ -149,14 +156,15 @@ for i in range(0, music_length):
         if sum(durations_current) + next_duration_value <= scale:
             durations_current.append(next_duration_value)
 
-    print("\n         Bar #" + str(i+1) + ": " + str(durations_current))
+    notes_current = []
+    notes_current_names = []
 
     note_last = None
     note_current_name = None
     note_current = None
 
     for duration in durations_current:
-        
+
         silence = False
 
         # sometimes put silence instead of a note
@@ -175,18 +183,31 @@ for i in range(0, music_length):
             if note_last == None:
                 break
 
-        note_last = note_current
-
         if not silence:
-            print("\nNote: " + str(note_current_name))
-        else:
-            print("\nSilence")
+            note_last = note_current
+            notes_current.append(note_current)
+            notes_current_names.append(note_current_name)
             
-        print("Duration: " + str(duration))
-
-        if not silence:
-            player.play_wave(synth1.generate_constant_wave(note_current, duration * 60/bpm_current))
         else:
-            time.sleep(duration * 60/bpm_current)
-    
+            notes_current.append("silence")
+            notes_current_names.append("silence")
 
+    print("\n" + str(notes_current_names) + "\n" + str(durations_current))
+
+    if random.uniform(0, 100) > non_repeat_percent:
+        bar_repeat_current = random.choice(bar_repeats)
+    else:
+        bar_repeat_current = 1
+        
+    print("Bar Repeat:", bar_repeat_current)
+
+    for bar_repeat in range(bar_repeat_current):
+        bar_num += 1
+        print("Bar #" + str(bar_num))
+        for i in range(len(durations_current)):
+            if not notes_current[i] == "silence":
+                player.play_wave(synth1.generate_constant_wave(notes_current[i], durations_current[i] * 60/bpm_current))
+            else:
+                time.sleep(durations_current[i] * 60/bpm_current)
+
+    durations_current = []
