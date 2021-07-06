@@ -96,21 +96,3 @@ bpms = [bpm_slowest, bpm_slow, bpm_slowish, bpm_normal, bpm_fastish, bpm_fast, b
 
 note_durations = {"1/4":1/4, "1/2": 1/2, "1":1, "2":2, "4":4}
 bar_repeats = [2, 4]
-
-# This next value ensures that the generator
-# doesn't jump between notes of very different
-# pitches. I could allow a real musician to do that
-# but this script probably should not. ( ◡‿◡ *)
-
-# times the frequency of last note
-note_jump_limit = 2.2
-
-# ratio of silences to notes
-silence_percent = 1
-
-# ratio of non-repeated bars to all bars
-# (set to 100 or above to inhibit repeated bars)
-non_repeat_percent = 55
-
-# number of bars
-music_length = 250

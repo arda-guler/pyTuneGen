@@ -3,7 +3,6 @@
 
 from synthesizer import Player, Synthesizer, Waveform
 from pytunegen.tunegen import TuneGen
-from pytunegen.constants import *
 import time
 
 # initialize the player
@@ -13,14 +12,14 @@ synth1 = Synthesizer(osc1_waveform = Waveform.sine, osc1_volume=1.0,
     use_osc2=True, osc2_waveform=Waveform.square, osc2_volume=0.3)
 
 # initialize the tune generator
-tunegen = TuneGen(None)
+tunegen = TuneGen(None, 2.2, 1, 55, 250)
 
 # print the generator details
 print(f"Seed: {tunegen.randseed}")
 print(f"BPM: {str(tunegen.bpm_current)}")
 print(f"Scale: {str(tunegen.scale)}/4")
 print(f"Chord: {tunegen.chord_current_name}")
-print(f"Length: {music_length} bars")
+print(f"Length: {tunegen.music_length} bars")
 
 tune_group = tunegen.generate()
 

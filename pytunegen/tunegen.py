@@ -8,12 +8,22 @@ import time
 class TuneGen:
     """Tune generator"""
 
-    def __init__(self, seed):
+    def __init__(self, seed, note_jump_limit,
+            silence_percent, non_repeat_percent, music_length):
         if seed:
             self.randseed = seed
         else:
             self.randseed = random.randint(0, 2**31)
         random.seed(self.randseed)
+        # times the frequency of last note
+        self.note_jump_limit = note_jump_limit
+        # ratio of silences to notes
+        self.silence_percent = silence_percent
+        # ratio of non-repeated bars to all bars
+        # (set to 100 or above to inhibit repeated bars)
+        self.non_repeat_percent = non_repeat_percent
+        # number of bars
+        self.music_length = music_length
         # get random bpm, scale, chord, silence percent, length
         self.bpm_current = bpms[random.randint(0, len(bpms) - 1)]
         self.scale = random.randint(1, 8)
@@ -47,15 +57,15 @@ class TuneGen:
 
                 # sometimes put silence instead of a note
                 # because sometimes silence tells more than a C4
-                if random.randint(1, 100) < silence_percent:
+                if random.randint(1, 100) < self.silence_percent:
                     silence = True
 
                 # make sure the upcoming note in the bar is not the same
                 # with the previous one, and also make sure we don't jump
                 # between high and low notes too aggressively
                 while note_last == None or (note_current == note_last or
-                                            note_current - note_last >= note_last * (note_jump_limit - 1) or
-                                            note_last - note_current >= note_last / (note_jump_limit - 1)):
+                                            note_current - note_last >= note_last * (self.note_jump_limit - 1) or
+                                            note_last - note_current >= note_last / (self.note_jump_limit - 1)):
                     note_current_name = random.choice(list(self.chord_current.keys()))
                     note_current = self.chord_current.get(note_current_name)
                     if note_last == None:
@@ -71,7 +81,7 @@ class TuneGen:
                     notes_current_names.append("silence")
 
             
-            if random.uniform(0, 100) > non_repeat_percent:
+            if random.uniform(0, 100) > self.non_repeat_percent:
                 bar_repeat_current = random.choice(bar_repeats)
             else:
                 bar_repeat_current = 1
@@ -86,7 +96,7 @@ class TuneGen:
             tune_group.append(group)
 
             durations_current = []
-            if bar_num >= music_length:
+            if bar_num >= self.music_length:
                 return tune_group
 
 class TuneGroup:
