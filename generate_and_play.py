@@ -12,7 +12,7 @@ synth1 = Synthesizer(osc1_waveform = Waveform.sine, osc1_volume=1.0,
     use_osc2=True, osc2_waveform=Waveform.square, osc2_volume=0.3)
 
 # initialize the tune generator
-tunegen = TuneGen(None, 2.2, 1, 55, 50)
+tunegen = TuneGen()
 
 # print the generator details
 print(f"Seed: {tunegen.randseed}")

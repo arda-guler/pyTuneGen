@@ -8,8 +8,8 @@ import time
 class TuneGen:
     """Tune generator"""
 
-    def __init__(self, seed, note_jump_limit,
-            silence_percent, non_repeat_percent, music_length):
+    def __init__(self, seed = None, note_jump_limit = 2.2,
+            silence_percent = 1, non_repeat_percent = 65, music_length = 50):
         if seed:
             self.randseed = seed
         else:
