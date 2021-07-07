@@ -17,7 +17,7 @@ tunegen = TuneGen()
 # print the generator details
 print(f"Seed: {tunegen.randseed}")
 print(f"BPM: {str(tunegen.bpm_current)}")
-print(f"Scale: {str(tunegen.scale)}/4")
+print("Time Signature:", tunegen.time_sig_display)
 print(f"Chord: {tunegen.chord_current_name}")
 print(f"Length: {tunegen.music_length} bars")
 

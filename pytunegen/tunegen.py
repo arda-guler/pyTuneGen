@@ -8,27 +8,57 @@ import time
 class TuneGen:
     """Tune generator"""
 
-    def __init__(self, seed = None, note_jump_limit = 2.2,
-            silence_percent = 1, non_repeat_percent = 65, music_length = 50):
+    def __init__(self, seed = None, music_length = 50,
+                 chord = None, bpm = None, time_sig = None,
+                 note_jump_limit = 2.2, silence_percent = 1,
+                 non_repeat_percent = 65):
         if seed:
             self.randseed = seed
         else:
             self.randseed = random.randint(0, 2**31)
         random.seed(self.randseed)
+        
         # times the frequency of last note
         self.note_jump_limit = note_jump_limit
+        
         # ratio of silences to notes
         self.silence_percent = silence_percent
+        
         # ratio of non-repeated bars to all bars
         # (set to 100 or above to inhibit repeated bars)
         self.non_repeat_percent = non_repeat_percent
+        
         # number of bars
         self.music_length = music_length
-        # get random bpm, scale, chord, silence percent, length
-        self.bpm_current = bpms[random.randint(0, len(bpms) - 1)]
-        self.scale = random.randint(1, 8)
-        self.chord_current_name = random.choice(list(chords.keys()))
-        self.chord_current = chords.get(self.chord_current_name)
+        
+        # get bpm, time signature, chord, silence percent, length
+        if bpm:
+            self.bpm_current = int(bpm)
+        else:
+            self.bpm_current = bpms[random.randint(0, len(bpms) - 1)]
+
+        if time_sig:
+            if int(time_sig[2]) <= 0 or not (int(time_sig[2]) % 2) == 0:
+                print("pyTuneGen Error: Illegal time signature.")
+                print("Lower time signature must be a positive even integer.")
+                return -1
+            self.time_sig_upper = int(time_sig[0])
+            self.time_sig_lower = int(time_sig[2])
+            self.time_sig = int(time_sig[0])/int(time_sig[2])
+        else:
+            self.time_sig_upper = random.randint(1, 8)
+            self.time_sig_lower = 4 # this can be hard-coded for now
+            self.time_sig = self.time_sig_upper / self.time_sig_lower
+            
+        self.time_sig_display = (str(self.time_sig_upper) + "/" +
+                                 str(self.time_sig_lower))
+        
+        if chord:
+            self.chord_current_name = chord
+            self.chord_current = chords.get(self.chord_current_name)
+        else:
+            self.chord_current_name = random.choice(list(chords.keys()))
+            self.chord_current = chords.get(self.chord_current_name)
 
     def generate(self):
         durations_current = []
@@ -37,11 +67,14 @@ class TuneGen:
 
         while True:
 
-            while durations_current == [] or sum(durations_current) < self.scale:
+            duration_selection_loop = 0
+            while durations_current == [] or sum(durations_current) < self.time_sig:
+                duration_selection_loop += 1
                 next_duration = random.choice(list(note_durations.keys()))
                 next_duration_value = note_durations.get(next_duration)
                 
-                if sum(durations_current) + next_duration_value <= self.scale:
+                if (sum(durations_current) + next_duration_value <= self.time_sig and not
+                    (duration_selection_loop <= 15 and next_duration_value <= 0.125)):
                     durations_current.append(next_duration_value)
 
             notes_current = []

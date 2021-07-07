@@ -80,13 +80,13 @@ chords = {"Full Notes":full_notes, "C Major":c_major, "C Minor":c_minor, "D Mino
 #       BPM PRESETS
 #-------------------------
 
-bpm_slowest = 30
-bpm_slow = 60
-bpm_slowish = 90
-bpm_normal = 120
-bpm_fastish = 160
-bpm_fast = 180
-bpm_fastest = 210
+bpm_slowest = 10
+bpm_slow = 15
+bpm_slowish = 30
+bpm_normal = 60
+bpm_fastish = 120
+bpm_fast = 160
+bpm_fastest = 180
 
 bpms = [bpm_slowest, bpm_slow, bpm_slowish, bpm_normal, bpm_fastish, bpm_fast, bpm_fastest]
 
@@ -94,5 +94,5 @@ bpms = [bpm_slowest, bpm_slow, bpm_slowish, bpm_normal, bpm_fastish, bpm_fast, b
 #  DURATIONS AND REPEATS
 #-------------------------
 
-note_durations = {"1/4":1/4, "1/2": 1/2, "1":1, "2":2, "4":4}
+note_durations = {"1/8": 1/8, "1/4":1/4, "1/2": 1/2, "1":1, "2":2, "4":4}
 bar_repeats = [2, 4]
