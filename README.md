@@ -1,7 +1,7 @@
 # pyTuneGen
 Generates music tunes using Python. Sometimes it isn't terrible at it.
 
-You can customize the generation by choosing your favorite chord, a suitable bpm, an interesting time signature, or adjust some of the unorthodox variables including the randomization seed; or you can simply sit back and let the lords of random number generation do their own thing!
+You can customize the generation by choosing your favorite scale, a suitable bpm, an interesting time signature, or adjust some of the unorthodox variables including the randomization seed; or you can simply sit back and let the lords of random number generation do their own thing!
 
 pyTuneGen can also export these grand works of art into MIDI files for convenient handling.
 
@@ -20,7 +20,7 @@ Although it is simple enough and does the job, the example above is extremely ba
 ```sh
 from pytunegen.midigen import MIDIgen
 
-midi_exporter = MIDIgen(seed=18811938, music_length=100, chord="F Minor", bpm=20, time_sig="3/8",
+midi_exporter = MIDIgen(seed=18811938, music_length=100, scale="F Minor", bpm=20, time_sig="3/8",
                         note_jump_limit=1.8, silence_percent=2, non_repeat_percent=75)
 midi_exporter.export("my_MIDI_file.mid")
 ```
@@ -46,7 +46,7 @@ tunegen = TuneGen()
 print(f"Seed: {tunegen.randseed}")
 print(f"BPM: {str(tunegen.bpm_current)}")
 print("Time Signature:", tunegen.time_sig_display)
-print(f"Chord: {tunegen.chord_current_name}")
+print(f"Scale: {tunegen.scale_current_name}")
 print(f"Length: {tunegen.music_length} bars")
 
 music = tunegen.generate()
