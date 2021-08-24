@@ -3,10 +3,12 @@ Generates music tunes using Python. Sometimes it isn't terrible at it.
 
 You can customize the generation by choosing your favorite chord, a suitable bpm, an interesting time signature, or adjust some of the unorthodox variables including the randomization seed; or you can simply sit back and let the lords of random number generation do their own thing!
 
-pyTuneGen can also export these grand works of art into MIDI files, with the help of 'midiutils' package.
+pyTuneGen can also export these grand works of art into MIDI files for convenient handling.
 
 ## Installation
-Work-In-Progress
+```sh
+pip install pytunegen
+```
 
 ## Usage
 If you want to start creating random MIDIs right away, it is this simple!
