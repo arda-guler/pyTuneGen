@@ -142,7 +142,7 @@ class Bar:
         self.notes = []
 
 class Note:
-    """Representation of a single tune"""
+    """Representation of a single note"""
     
     def __init__(self, pitch, duration, silence):
         self.pitch = pitch
