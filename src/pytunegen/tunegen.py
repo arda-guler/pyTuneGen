@@ -9,7 +9,7 @@ class TuneGen:
     """Tune generator"""
 
     def __init__(self, seed = None, music_length = 50,
-                 chord = None, bpm = None, time_sig = None,
+                 scale = None, bpm = None, time_sig = None,
                  note_jump_limit = 2.2, silence_percent = 1,
                  non_repeat_percent = 65):
         if seed:
@@ -31,7 +31,7 @@ class TuneGen:
         # number of bars
         self.music_length = music_length
         
-        # get bpm, time signature, chord, silence percent, length
+        # get bpm, time signature, scale, silence percent, length
         if bpm:
             self.bpm_current = int(bpm)
         else:
@@ -53,12 +53,12 @@ class TuneGen:
         self.time_sig_display = (str(self.time_sig_upper) + "/" +
                                  str(self.time_sig_lower))
         
-        if chord:
-            self.chord_current_name = chord
-            self.chord_current = chords.get(self.chord_current_name)
+        if scale:
+            self.scale_current_name = scale
+            self.scale_current = scales.get(self.scale_current_name)
         else:
-            self.chord_current_name = random.choice(list(chords.keys()))
-            self.chord_current = chords.get(self.chord_current_name)
+            self.scale_current_name = random.choice(list(scales.keys()))
+            self.scale_current = scales.get(self.scale_current_name)
 
     def generate(self):
         durations_current = []
@@ -99,8 +99,8 @@ class TuneGen:
                 while note_last == None or (note_current == note_last or
                                             note_current - note_last >= note_last * (self.note_jump_limit - 1) or
                                             note_last - note_current >= note_last / (self.note_jump_limit - 1)):
-                    note_current_name = random.choice(list(self.chord_current.keys()))
-                    note_current = self.chord_current.get(note_current_name)
+                    note_current_name = random.choice(list(self.scale_current.keys()))
+                    note_current = self.scale_current.get(note_current_name)
                     if note_last == None:
                         break
 

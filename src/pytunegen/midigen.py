@@ -10,11 +10,11 @@ class MIDIgen():
     """MIDI Exporter"""
     
     def __init__(self, seed = None, music_length = 50,
-                 chord = None, bpm = None, time_sig = None,
+                 scale = None, bpm = None, time_sig = None,
                  note_jump_limit = 2.2, silence_percent = 1,
                  non_repeat_percent = 65):
     
-        self.tunegen = TuneGen(seed, music_length, chord, bpm,
+        self.tunegen = TuneGen(seed, music_length, scale, bpm,
                                time_sig, note_jump_limit,
                                silence_percent, non_repeat_percent)
         self.music = self.tunegen.generate()

@@ -47,7 +47,7 @@ a5 = 880.00
 a_5 = 932
 b5 = 988
 
-# chords
+# scales
 
 full_notes = {"C3":c3, "C#3":c_3, "D3":d3, "D#3":d_3, "E3":e3, "F3":f3, "F#3":f_3, "G3":g3, "G#3":g_3, "A3":a3, "A#3":a_3, "B3":b3,
               "C4":c4, "C#4":c_4, "D4":d4, "D#4":d_4, "E4":e4, "F4":f4, "F#4":f_4, "G4":g4, "G#4":g_4, "A4":a4, "A#4":a_4, "B4":b4,
@@ -56,6 +56,18 @@ full_notes = {"C3":c3, "C#3":c_3, "D3":d3, "D#3":d_3, "E3":e3, "F3":f3, "F#3":f_
 c_major = {"C3":c3, "D3":d3, "E3":e3, "F3":f3, "G3":g3, "A3":a3, "B3":b3,
            "C4":c4, "D4":d4, "E4":e4, "F4":f4, "G4":g4, "A4":a4, "B4":b4,
            "C5":c5, "D5":d5, "E5":e5, "F5":f5, "G5":g5, "A5":a5, "B5":b5}
+
+f_major = {"C3":c3, "D3":d3, "E3":e3, "F3":f3, "G3":g3, "A3":a3, "A#3":a_3,
+           "C4":c4, "D4":d4, "E4":e4, "F4":f4, "G4":g4, "A4":a4, "A#4":a_4,
+           "C5":c5, "D5":d5, "E5":e5, "F5":f5, "G5":g5, "A5":a5, "A#5":a_5}
+
+d_major = {"C#3":c_3, "D3":d3, "E3":e3, "F#3":f_3, "G3":g3, "A3":a3, "B3":b3,
+           "C#4":c_4, "D4":d4, "E4":e4, "F#4":f_4, "G4":g4, "A4":a4, "B4":b4,
+           "C#5":c_5, "D5":d5, "E5":e5, "F#5":f_5, "G5":g5, "A5":a5, "B5":b5}
+
+g_major = {"C3":c3, "D3":d3, "E3":e3, "F#3":f_3, "G3":g3, "A3":a3, "B3":b3,
+           "C4":c4, "D4":d4, "E4":e4, "F#4":f_4, "G4":g4, "A4":a4, "B4":b4,
+           "C5":c5, "D5":d5, "E5":e5, "F#5":f_5, "G5":g5, "A5":a5, "B5":b5}
 
 c_minor = {"C3":c3, "D3":d3, "D#3":d_3, "F3":f3, "G3":g3, "G#3":g_3, "A#3":a_3,
            "C4":c4, "D4":d4, "D#4":d_4, "F4":f4, "G4":g4, "G#4":g_4, "A#4":a_4,
@@ -73,8 +85,8 @@ f_minor = {"C3":c3, "C#3":c_3, "D#3":d_3, "F3":f3, "G3":g3, "G#3":g_3, "A#3":a_3
            "C4":c4, "C#4":c_4, "D#4":d_4, "F4":f4, "G4":g4, "G#4":g_4, "A#4":a_4,
            "C5":c5, "C#5":c_5, "D#5":d_5, "F5":f5, "G5":g5, "G#5":g_5, "A#5":a_5}
 
-chords = {"Full Notes":full_notes, "C Major":c_major, "C Minor":c_minor, "D Minor":d_minor, "G Minor":g_minor,
-          "F Minor":f_minor}
+scales = {"Full Notes":full_notes, "C Major":c_major, "F Major":f_major, "D Major":d_major, "G Major":g_major,
+          "C Minor":c_minor, "D Minor":d_minor, "G Minor":g_minor, "F Minor":f_minor}
 
 #-------------------------
 #       BPM PRESETS
