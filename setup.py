@@ -8,7 +8,7 @@ setuptools.setup(
     version="1.0.0",
     author="arda-guler",
     author_email="ardaguler09@gmail.com",
-    description="Generates randomized music tunes with Python.",
+    description="Generates randomized music tunes with Python, with MIDI export support.",
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/arda-guler/pyTuneGen",
