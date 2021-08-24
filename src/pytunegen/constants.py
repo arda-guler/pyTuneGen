@@ -57,17 +57,29 @@ c_major = {"C3":c3, "D3":d3, "E3":e3, "F3":f3, "G3":g3, "A3":a3, "B3":b3,
            "C4":c4, "D4":d4, "E4":e4, "F4":f4, "G4":g4, "A4":a4, "B4":b4,
            "C5":c5, "D5":d5, "E5":e5, "F5":f5, "G5":g5, "A5":a5, "B5":b5}
 
-f_major = {"C3":c3, "D3":d3, "E3":e3, "F3":f3, "G3":g3, "A3":a3, "A#3":a_3,
-           "C4":c4, "D4":d4, "E4":e4, "F4":f4, "G4":g4, "A4":a4, "A#4":a_4,
-           "C5":c5, "D5":d5, "E5":e5, "F5":f5, "G5":g5, "A5":a5, "A#5":a_5}
-
 d_major = {"C#3":c_3, "D3":d3, "E3":e3, "F#3":f_3, "G3":g3, "A3":a3, "B3":b3,
            "C#4":c_4, "D4":d4, "E4":e4, "F#4":f_4, "G4":g4, "A4":a4, "B4":b4,
            "C#5":c_5, "D5":d5, "E5":e5, "F#5":f_5, "G5":g5, "A5":a5, "B5":b5}
 
+e_major = {"C#3":c_3, "D#3":d_3, "E3":e3, "F#3":f_3, "G#3":g_3, "A3":a3, "B3":b3,
+           "C#4":c_4, "D#4":d_4, "E4":e4, "F#4":f_4, "G#4":g_4, "A4":a4, "B4":b4,
+           "C#5":c_4, "D#5":d_4, "E5":e5, "F#5":f_5, "G#5":g_5, "A5":a5, "B5":b5}
+
+f_major = {"C3":c3, "D3":d3, "E3":e3, "F3":f3, "G3":g3, "A3":a3, "A#3":a_3,
+           "C4":c4, "D4":d4, "E4":e4, "F4":f4, "G4":g4, "A4":a4, "A#4":a_4,
+           "C5":c5, "D5":d5, "E5":e5, "F5":f5, "G5":g5, "A5":a5, "A#5":a_5}
+
 g_major = {"C3":c3, "D3":d3, "E3":e3, "F#3":f_3, "G3":g3, "A3":a3, "B3":b3,
            "C4":c4, "D4":d4, "E4":e4, "F#4":f_4, "G4":g4, "A4":a4, "B4":b4,
            "C5":c5, "D5":d5, "E5":e5, "F#5":f_5, "G5":g5, "A5":a5, "B5":b5}
+
+a_major = {"C#3":c_3, "D3":d3, "E3":e3, "F#3":f_3, "G#3":g_3, "A3":a3, "B3":b3,
+           "C#4":c_4, "D4":d4, "E4":e4, "F#4":f_4, "G#4":g_4, "A4":a4, "B4":b4,
+           "C#5":c_5, "D5":d5, "E5":e5, "F#5":f_5, "G#5":g_5, "A5":a5, "B5":b5}
+
+b_major = {"C#3":c_3, "D#3":d_3, "E3":e3, "F#3":f_3, "G#3":g_3, "A#3":a_3, "B3":b3,
+           "C#4":c_4, "D#4":d_4, "E4":e4, "F#4":f_4, "G#4":g_4, "A#4":a_4, "B4":b4,
+           "C#5":c_5, "D#5":d_5, "E5":e5, "F#5":f_5, "G#5":g_5, "A#5":a_5, "B5":b5}
 
 c_minor = {"C3":c3, "D3":d3, "D#3":d_3, "F3":f3, "G3":g3, "G#3":g_3, "A#3":a_3,
            "C4":c4, "D4":d4, "D#4":d_4, "F4":f4, "G4":g4, "G#4":g_4, "A#4":a_4,
@@ -77,16 +89,29 @@ d_minor = {"C3":c3, "D3":d3, "E3":e3, "F3":f3, "G3":g3, "A3":a3, "A#3":a_3,
            "C4":c4, "D4":d4, "E4":e4, "F4":f4, "G4":g4, "A4":a4, "A#4":a_4,
            "C5":c5, "D5":d5, "E5":e5, "F5":f5, "G5":g5, "A5":a5, "A#5":a_5}
 
-g_minor = {"C3":c3, "D3":d3, "D#3":d_3, "F3":f3, "G3":g3, "A3":a3, "A#3":a_3,
-           "C4":c4, "D4":d4, "D#4":d_4, "F4":f4, "G4":g4, "A4":a4, "A#4":a_4,
-           "C5":c5, "D5":d5, "D#4":d_5, "F4":f5, "G4":g5, "A4":a5, "A#4":a_5}
+e_minor = {"C3":c3, "D3":d3, "E3":e3, "F#3":f_3, "G3":g3, "A3":a3, "B3":b3,
+           "C4":c4, "D4":d4, "E4":e4, "F#4":f_4, "G4":g4, "A4":a4, "B4":b4,
+           "C5":c5, "D5":d5, "E5":e5, "F#5":f_5, "G5":g5, "A5":a5, "B5":b5}
 
 f_minor = {"C3":c3, "C#3":c_3, "D#3":d_3, "F3":f3, "G3":g3, "G#3":g_3, "A#3":a_3,
            "C4":c4, "C#4":c_4, "D#4":d_4, "F4":f4, "G4":g4, "G#4":g_4, "A#4":a_4,
            "C5":c5, "C#5":c_5, "D#5":d_5, "F5":f5, "G5":g5, "G#5":g_5, "A#5":a_5}
 
-scales = {"Full Notes":full_notes, "C Major":c_major, "F Major":f_major, "D Major":d_major, "G Major":g_major,
-          "C Minor":c_minor, "D Minor":d_minor, "G Minor":g_minor, "F Minor":f_minor}
+g_minor = {"C3":c3, "D3":d3, "D#3":d_3, "F3":f3, "G3":g3, "A3":a3, "A#3":a_3,
+           "C4":c4, "D4":d4, "D#4":d_4, "F4":f4, "G4":g4, "A4":a4, "A#4":a_4,
+           "C5":c5, "D5":d5, "D#4":d_5, "F4":f5, "G4":g5, "A4":a5, "A#4":a_5}
+
+a_minor = {"C3":c3, "D3":d3, "E3":e3, "F3":f3, "G3":g3, "A3":a3, "B3":b3,
+           "C4":c4, "D4":d4, "E4":e4, "F4":f4, "G4":g4, "A4":a4, "B4":b4,
+           "C5":c5, "D5":d5, "E5":e5, "F5":f5, "G5":g5, "A5":a5, "B5":b5}
+
+b_minor = {"C#3":c_3, "D3":d3, "E3":e3, "F#3":f_3, "G3":g3, "A3":a3, "B3":b3,
+           "C#4":c_4, "D4":d4, "E4":e4, "F#4":f_4, "G4":g4, "A4":a4, "B4":b4,
+           "C#5":c_5, "D5":d5, "E5":e5, "F#5":f_5, "G5":g5, "A5":a5, "B5":b5}
+
+scales = {"Full Notes":full_notes,
+          "C Major":c_major, "D Major":d_major, "E Major":e_major, "F Major":f_major, "G Major":g_major, "A Major":a_major, "B Major":b_major,
+          "C Minor":c_minor, "D Minor":d_minor, "E Minor":e_minor, "G Minor":g_minor, "F Minor":f_minor, "A Minor":a_minor, "B Minor":b_minor}
 
 #-------------------------
 #       BPM PRESETS
