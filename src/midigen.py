@@ -19,7 +19,7 @@ class MIDIgen():
                                silence_percent, non_repeat_percent)
         self.music = self.tunegen.generate()
 
-    def export(self):
+    def export(self, export_filename = None):
 
         self.exportMIDI = MIDIFile(1)
         self.exportMIDI.addTempo(0, 0, self.tunegen.bpm_current)
@@ -35,5 +35,10 @@ class MIDIgen():
                 else:
                     time += note.duration
 
-        with open(str(self.tunegen.randseed) + ".mid", "wb") as export_file:
+        if not export_filename:
+            export_filename = str(self.tunegen.randseed) + ".mid"
+        elif not export_filename[-4:] == ".mid":
+            export_filename = export_filename + ".mid"
+
+        with open(export_filename, "wb") as export_file:
             self.exportMIDI.writeFile(export_file)
