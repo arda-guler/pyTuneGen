@@ -5,6 +5,8 @@ You can customize the generation by choosing your favorite scale, a suitable bpm
 
 pyTuneGen can also export these grand works of art into MIDI files for convenient handling.
 
+The basic introduction below is probably all you need, but [full documentation](https://arda-guler.github.io/pytunegenDocs/index.html) is also available.
+
 ## Installation
 ```sh
 pip install pytunegen
