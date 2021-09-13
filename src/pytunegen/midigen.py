@@ -2,7 +2,6 @@
 # -*- coding: utf-8 -*-
 
 from pytunegen.tunegen import TuneGen
-from pytunegen.constants import full_notes
 from midiutil import MIDIFile
 import math
 

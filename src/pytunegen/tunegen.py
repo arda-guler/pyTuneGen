@@ -3,7 +3,6 @@
 
 from pytunegen.constants import *
 import random
-import time
 
 class TuneGen:
     """Tune generator"""
