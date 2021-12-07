@@ -63,3 +63,21 @@ for bar in music:
         else:
             time.sleep(note.duration * 60/tunegen.bpm_current)
 ```
+
+### SOS
+If you need to generate the SOS morse code tune for any reason, you may simply enter "sos" or any of the following as the seed; "SOS", "s.o.s", "S.O.S", "s.o.s.", "S.O.S."
+
+```
+# for use with a custom music player,
+# such as the one in the example above
+from pytunegen.tunegen import TuneGen
+tunegen = TuneGen("sos")
+```
+
+```
+# to generate a MIDI file
+from pytunegen.midigen import MIDIgen
+MIDIgen("sos").export()
+```
+
+This functionality is hard-coded into Tunegen (tunegen.py) and will disregard any other inputs.

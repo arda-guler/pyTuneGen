@@ -5,7 +5,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setuptools.setup(
     name="pytunegen",
-    version="1.0.1",
+    version="1.1.0",
     author="arda-guler",
     author_email="ardaguler09@gmail.com",
     description="Generates randomized music tunes with Python, with MIDI export support.",

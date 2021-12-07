@@ -64,6 +64,30 @@ class TuneGen:
         bar_num = 0
         music = []
 
+        # generate the SOS morse code if any of these are given as a seed
+        # ...---...
+        sos_strings = ["sos", "SOS", "s.o.s", "S.O.S", "s.o.s.", "S.O.S."]
+
+        if self.randseed in sos_strings:
+            self.time_sig = 4.75
+            self.bpm_current = 60
+            notes_names = ["C5", "silence", "C5", "silence", "C5", "silence",
+                           "C5", "silence", "C5", "silence", "C5", "silence",
+                           "C5", "silence", "C5", "silence", "C5", "silence",
+                           "silence"]
+            durations = [0.25, 0.1, 0.25, 0.1, 0.25, 0.1,
+                         0.5, 0.1, 0.5, 0.1, 0.5, 0.1,
+                         0.25, 0.1, 0.25, 0.1, 0.25, 0.1,
+                         1]
+            
+            bar = Bar(notes_names, durations, 100)
+            bar.notes = [Note(c5, 0.25, 0), Note(c5, 0.1, 1), Note(c5, 0.25, 0), Note(c5, 0.1, 1), Note(c5, 0.25, 0), Note(c5, 0.1, 1),
+                         Note(c5, 0.5, 0), Note(c5, 0.1, 1), Note(c5, 0.5, 0), Note(c5, 0.1, 1), Note(c5, 0.5, 0), Note(c5, 0.1, 1),
+                         Note(c5, 0.25, 0), Note(c5, 0.1, 1), Note(c5, 0.25, 0), Note(c5, 0.1, 1), Note(c5, 0.25, 0), Note(c5, 0.1, 1),
+                         Note(c5, 1, 1)]
+            
+            return [bar] * 100
+
         while True:
 
             duration_selection_loop = 0
