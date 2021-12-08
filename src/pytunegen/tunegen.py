@@ -70,21 +70,21 @@ class TuneGen:
 
         if self.randseed in sos_strings:
             self.time_sig = 4.75
-            self.bpm_current = 60
+            self.bpm_current = 90
             notes_names = ["C5", "silence", "C5", "silence", "C5", "silence",
                            "C5", "silence", "C5", "silence", "C5", "silence",
                            "C5", "silence", "C5", "silence", "C5", "silence",
                            "silence"]
-            durations = [0.25, 0.1, 0.25, 0.1, 0.25, 0.1,
-                         0.5, 0.1, 0.5, 0.1, 0.5, 0.1,
-                         0.25, 0.1, 0.25, 0.1, 0.25, 0.1,
-                         1]
+            durations = [0.25, 0.25, 0.25, 0.25, 0.25, 0.25,
+                         0.75, 0.25, 0.75, 0.25, 0.75, 0.25,
+                         0.25, 0.25, 0.25, 0.25, 0.25, 0.25,
+                         1.75]
             
             bar = Bar(notes_names, durations, 100)
-            bar.notes = [Note(c5, 0.25, 0), Note(c5, 0.1, 1), Note(c5, 0.25, 0), Note(c5, 0.1, 1), Note(c5, 0.25, 0), Note(c5, 0.1, 1),
-                         Note(c5, 0.5, 0), Note(c5, 0.1, 1), Note(c5, 0.5, 0), Note(c5, 0.1, 1), Note(c5, 0.5, 0), Note(c5, 0.1, 1),
-                         Note(c5, 0.25, 0), Note(c5, 0.1, 1), Note(c5, 0.25, 0), Note(c5, 0.1, 1), Note(c5, 0.25, 0), Note(c5, 0.1, 1),
-                         Note(c5, 1, 1)]
+            bar.notes = [Note(c5, 0.25, 0), Note(c5, 0.25, 1), Note(c5, 0.25, 0), Note(c5, 0.25, 1), Note(c5, 0.25, 0), Note(c5, 0.25, 1),
+                         Note(c5, 0.75, 0), Note(c5, 0.25, 1), Note(c5, 0.75, 0), Note(c5, 0.25, 1), Note(c5, 0.75, 0), Note(c5, 0.25, 1),
+                         Note(c5, 0.25, 0), Note(c5, 0.25, 1), Note(c5, 0.25, 0), Note(c5, 0.25, 1), Note(c5, 0.25, 0), Note(c5, 0.25, 1),
+                         Note(c5, 1.75, 1)]
             
             return [bar] * 100
 
